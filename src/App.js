@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react'
+import { Provider } from "react-redux";
+import store from './redux/store';
+import Navbar from './components/navbar/Navbar'
+import './app.css'
+import RepoInfo from './components/repoInfo/RepoInfo'
+import IssueHeader from './components/issues/IssueHeader'
+import Issues from './components/issues/Issues'
+import FilterNav from './components/filter/FilterNav';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+      <>
+        <Navbar />
+        <Provider store={store} >
+          <RepoInfo />
+          {/* <FilterNav/> */}
+          <Issues />
+        </Provider>
+      </>
+    );
+
 }
 
-export default App;
+export default App

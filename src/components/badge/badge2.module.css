@@ -1,0 +1,42 @@
+.bagde {
+  display: flex;
+  align-items: center;
+  color: #24292e;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+.bagde .title {
+  padding: 3px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+}
+
+.bagde .title svg
+{
+    margin: 5px;
+}
+
+.bagde i {
+  margin-right: 5px;
+}
+
+.bagde .count {
+  height: 18px;
+  width: 18px;
+  background-color: rgb(229, 233, 235);
+  border-radius: 50%;
+  color: black;
+  text-align: center;
+}
+
+/* hover */
+.bagde:hover {
+  border-bottom: 1px solid orange;
+}
+/* fixes */
+.bagde .count:empty {
+  padding: 0px;
+  display: none;
+}

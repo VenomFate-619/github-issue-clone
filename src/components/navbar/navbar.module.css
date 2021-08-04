@@ -1,0 +1,15 @@
+nav
+{
+   display: flex;
+    justify-content: space-between;
+    background-color: #161A23;
+    padding: 1rem;
+}
+
+nav div{
+    font-size: 20px;
+}
+
+nav div i{
+    color: white;
+}
