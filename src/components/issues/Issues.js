@@ -6,7 +6,6 @@ import { fetchIssues } from "../../redux/actions/action";
 function Issues() {
   const dispatch = useDispatch();
   const { loading, page, issues } = useSelector((state) => state);
-  console.log(loading, issues);
   // const [nextPage, setnextPage] = useState(1);
   const loader = useRef(null);
 
@@ -15,14 +14,16 @@ function Issues() {
     (entries) => {
       const target = entries[0];
       if (target.isIntersecting) {
+        console.log("visible");
         const x = dispatch(fetchIssues());
+        console.log(x);
         x.then((x) => {
           let y = x.split(",")[0];
           if (y.search(`rel="next"`) !== -1) {
             const url = y.slice(1, 70);
             const urlSearchParams = new URLSearchParams(url);
-            console.log("lets take the page");
             // setnextPage(urlSearchParams.get("page"));
+            console.log(urlSearchParams.get("page"));
             dispatch({
               type: "NEXT_PAGE",
               payload: urlSearchParams.get("page"),
@@ -56,13 +57,13 @@ function Issues() {
     //  const observer = new IntersectionObserver(handleObserver, option);
     //  if (loader.current) observer.observe(loader.current);
     scrollObserver(loader)
-   }, [loader]);
+   }, [loader,scrollObserver]);
 
   return (
     <div className="container">
       <IssueHeader />
       <div className="issue-row">
-        {!loading &&
+        {
           issues.map((data, index) => (
             <IssueCard
               created_at={data.created_at}
@@ -70,8 +71,10 @@ function Issues() {
               number={data.number}
               title={data.title}
               key={index}
+              index={index}
             />
           ))}
+          {loading && (<div>loading</div>)}
         <div ref={loader} />
       </div>
     </div>

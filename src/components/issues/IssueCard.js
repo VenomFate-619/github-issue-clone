@@ -1,9 +1,10 @@
-import React  from "react";
+import React ,{useRef} from "react";
 import moment from "moment";
 import './issue.css'
 
 
-const Issues = ({created_at,title,number,login}) => {
+const Issues = React.memo(({ created_at, title, number, login, index }) => {
+  
   let then = moment(created_at);
   let now = moment();
   let ans = then.from(now);
@@ -31,6 +32,6 @@ const Issues = ({created_at,title,number,login}) => {
       </p>
     </div>
   );
-};
+});
 
 export default Issues;

@@ -39,7 +39,7 @@ export function reducer(state = initialState, action) {
       newState.issues = newState.issues.concat(action.payload);
       return newState;
     case NEXT_PAGE:
-      newState.page = action.apayload;
+      newState.page = action.payload;
       return newState;
     case ERROR:
       newState.loading = false;

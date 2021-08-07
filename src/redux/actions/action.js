@@ -20,10 +20,11 @@ export function changeFork(count) {
 }
 
 export const fetchIssues = () => async (dispatch, getState) => {
+  console.log(getState().page);
   try {
       dispatch({type:REQUEST})
       const info = await fetch(
-        `https://api.github.com/repos/facebook/react/issues?per_page=5&page=${
+        `https://api.github.com/repos/facebook/react/issues?per_page=7&page=${
           getState().page
         }`
       );
