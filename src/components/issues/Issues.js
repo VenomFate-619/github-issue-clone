@@ -11,25 +11,11 @@ function Issues() {
 
 
   const handleObserver = useCallback(
-    (entries) => {
+    async (entries) => {
       const target = entries[0];
       if (target.isIntersecting) {
         console.log("visible");
-        const x = dispatch(fetchIssues());
-        console.log(x);
-        x.then((x) => {
-          let y = x.split(",")[0];
-          if (y.search(`rel="next"`) !== -1) {
-            const url = y.slice(1, 70);
-            const urlSearchParams = new URLSearchParams(url);
-            // setnextPage(urlSearchParams.get("page"));
-            console.log(urlSearchParams.get("page"));
-            dispatch({
-              type: "NEXT_PAGE",
-              payload: urlSearchParams.get("page"),
-            });
-          }
-        });
+        dispatch(fetchIssues())  
       }
     },
     [dispatch]
@@ -43,9 +29,11 @@ function Issues() {
           threshold: 0.5,
         };
         const observer = new IntersectionObserver(handleObserver, option);
-        if (node.current) observer.observe(node.current);
+        if (node && node.current) observer.observe(node.current);
+        return () => observer.unobserve(node.current);
+        
       },
-      [dispatch, handleObserver]
+      [handleObserver]
     );
 
    useEffect(() => {
