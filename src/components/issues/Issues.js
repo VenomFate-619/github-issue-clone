@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import IssueHeader from "./IssueHeader";
 import IssueCard from "./IssueCard";
 import { fetchIssues } from "../../redux/actions/action";
 function Issues() {
   const dispatch = useDispatch();
-  const { loading, page, issues } = useSelector((state) => state);
-  // const [nextPage, setnextPage] = useState(1);
+  const { loading,issues } = useSelector((state) => state);
+  
   const loader = useRef(null);
 
 

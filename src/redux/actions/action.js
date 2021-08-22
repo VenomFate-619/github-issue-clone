@@ -3,8 +3,10 @@ import {
   CHANGE_WATCH,
   CHANGE_FORK,
   FETCH_DATA,
-   ERROR,
+  ERROR,
   REQUEST,
+  OPEN_ISSUES,
+  CLOSED_ISSUES,
 } from "../constant";
 
 export function changeWatch(count) {
@@ -60,3 +62,24 @@ export const fetchIssues = () => async (dispatch, getState) => {
   }
 
 };
+
+export const fetchIssuesCount = (query) => async (dispatch) =>{
+  try {
+     dispatch({ type: REQUEST });
+     const info = await fetch(
+       `https://api.github.com/search/issues?q=repo:facebook/react+type:issue+state:${query}`);
+       const vals = await info.json();
+       console.log(vals);
+       if(query==="open")
+       {
+          dispatch({ type: OPEN_ISSUES, payload: vals.total_count });
+       }
+       else
+       {
+          dispatch({ type: CLOSED_ISSUES, payload: vals.total_count });
+       }
+      
+  } catch (error) {
+    dispatch({type:ERROR})
+  }
+}

@@ -1,6 +1,5 @@
-import { styles } from 'ansi-colors';
 import React from 'react'
-import sytles from './navbar.module.css'
+import './navbar.css'
 function Navbar() {
     return (
       <nav   >

@@ -5,6 +5,8 @@ const ERROR = "ERROR";
 const REQUEST = "REQUEST";
 const FETCH_DATA = "FETCH_DATA";
 const NEXT_PAGE = "NEXT_PAGE";
+const OPEN_ISSUES = "OPEN_ISSUES";
+const CLOSED_ISSUES = "CLOSED_ISSUES";
 
 
 export {
@@ -14,5 +16,7 @@ export {
   FETCH_DATA,
   NEXT_PAGE,
   ERROR,
-  REQUEST
+  REQUEST,
+  OPEN_ISSUES,
+  CLOSED_ISSUES
 };

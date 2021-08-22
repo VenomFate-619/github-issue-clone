@@ -1,7 +1,12 @@
-import React from "react";
+import React  from "react";
 import "./issue.css";
+import { useSelector} from "react-redux";
+
 
 const IssueHeader = () => {
+  const { openIssues, closedIssues } = useSelector((state) => state);
+  
+  
   return (
     <div className="issue-header">
       <div className="number-issues-container">
@@ -19,7 +24,9 @@ const IssueHeader = () => {
               d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0z"
             ></path>
           </svg>
-          <div className="issues-status-count">460 Open</div>
+          <div className="issues-status-count">
+            {openIssues ? openIssues.toLocaleString() : 0} Open
+          </div>
         </div>
         <div className="number-issues-closed">
           <svg
@@ -36,7 +43,9 @@ const IssueHeader = () => {
               d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"
             ></path>
           </svg>
-          <div className="issues-status-count">8,973 Closed</div>
+          <div className="issues-status-count">
+            {closedIssues ? closedIssues.toLocaleString() : 0} Closed
+          </div>
         </div>
       </div>
       <div className="issue-header-tabs-container">

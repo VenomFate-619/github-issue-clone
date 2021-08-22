@@ -6,6 +6,8 @@ import {
   ERROR,
   REQUEST,
   NEXT_PAGE,
+  OPEN_ISSUES,
+  CLOSED_ISSUES,
 } from "../constant";
 
 const initialState = {
@@ -14,7 +16,9 @@ const initialState = {
   star: 0,
   page:1,
   issues:[], // it should be undefined or not
-  loading:true
+  loading:true,
+  openIssues:0,
+  closedIssues:0
 };
 
 export function reducer(state = initialState, action) {
@@ -40,6 +44,12 @@ export function reducer(state = initialState, action) {
       return newState;
     case NEXT_PAGE:
       newState.page = action.payload;
+      return newState;
+    case OPEN_ISSUES:
+      newState.openIssues = action.payload;
+      return newState
+    case CLOSED_ISSUES:
+      newState.closedIssues = action.payload;
       return newState;
     case ERROR:
       newState.loading = false;

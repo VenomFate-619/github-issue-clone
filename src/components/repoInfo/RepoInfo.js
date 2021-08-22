@@ -1,17 +1,23 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {
   changeWatch,
   changeStar,
   changeFork,
 } from "../../redux/actions/action";
+import  {fetchIssuesCount} from "../../redux/actions/action"
 import './repoInfo.css'
 import Badge from '../badge/Badge'
 import Badge2 from '../badge/Badge2';
+
 function RepoInfo() {
   const data = useSelector(state => state)
  
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchIssuesCount("open"));
+    dispatch(fetchIssuesCount("closed"));
+  }, []);
   const clickHandle = (code,no) =>{
     switch(code)
     {
@@ -85,7 +91,7 @@ function RepoInfo() {
                   ></path>
                 </svg>
               </Badge2>
-              <Badge2 text="issues" count={12}>
+              <Badge2 text="issues" count={data.openIssues ? data.openIssues.toLocaleString() : 0}>
                 <svg
                   viewBox="0 0 16 16"
                   version="1.1"
