@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import IssueHeader from "./IssueHeader";
 import IssueCard from "./IssueCard";
 import { fetchIssues } from "../../redux/actions/action";
+import Loader from "../loader/Loader";
 function Issues() {
   const dispatch = useDispatch();
   const { loading,issues } = useSelector((state) => state);
@@ -62,7 +63,7 @@ function Issues() {
               index={index}
             />
           ))}
-          {loading && (<div>loading</div>)}
+          {loading && (<Loader/>)}
         <div ref={loader} />
       </div>
     </div>
