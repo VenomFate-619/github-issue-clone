@@ -91,7 +91,7 @@ function RepoInfo() {
                   ></path>
                 </svg>
               </Badge2>
-              <Badge2 text="issues" count={data.openIssues ? data.openIssues.toLocaleString() : 0}>
+              <Badge2 text="issues" count={data.openIssues ? data.openIssues.toLocaleString() : 0} active>
                 <svg
                   viewBox="0 0 16 16"
                   version="1.1"

@@ -1,8 +1,9 @@
 import React from 'react'
 import style from './badge2.module.css'
-function Badge2({ text,  count ,children}) {
+function Badge2({ text,  count ,children,active=false}) {
+  console.log(active)
   return (
-    <div className={style.bagde}>
+    <div className={`${style.bagde} ${active && style.active}` }>
       <div className={style.title}>
         {children}
         {text}

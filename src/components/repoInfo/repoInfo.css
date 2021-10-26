@@ -34,4 +34,5 @@
 }
 .repo-nav {
   display: flex;
+  overflow-x: auto;
 }
