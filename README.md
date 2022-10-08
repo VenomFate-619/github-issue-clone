@@ -8,4 +8,4 @@
  - Used Abort Controller as a cancel token in fetch API
  
 **Live site**
-https://hardcore-ptolemy-39ffb6.netlify.app/
+https://github-issues-clone.netlify.app/
