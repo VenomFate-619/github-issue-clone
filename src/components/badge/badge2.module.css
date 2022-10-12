@@ -38,7 +38,8 @@
 }
 /* hover */
 .bagde:hover:not(.active) {
-  border-bottom: 1px solid #85888d;
+  border-bottom: 1px solid #85888d !important ;
+  border:1px solid transparent ;
 }
 /* fixes */
 .bagde .count:empty {
